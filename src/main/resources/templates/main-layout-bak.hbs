@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  {{#block "page-title"}}
+    <title>책검색 웹 서비스</title>
+  {{/block}}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!--style CSS import-->
+  <!--<link rel="stylesheet" type="text/css" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css">-->
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/custom.css">
+  {{#block "page-style"}}{{/block}}
+</head>
+
+<body>
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
+<div class="row">
+  <div class="col-sm-12">
+    {{#block "page-header"}}{{/block}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    {{#block "page-body"}}{{/block}}
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <p class="copyright text-muted">Copyright © Daltokki Website 2018</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--script JS import-->
+<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('input[data-date-picker="on"]').datepicker({
+      format: 'yyyy-mm-dd',
+      titleformat: 'yyyy MM',
+      language: '{{locale}}',
+      todayBtn: true,
+      autoclose: true
+    });
+
+    $('input[data-month-picker="on"]').datepicker({
+      format: 'yyyy-mm',
+      titleformat: 'yyyy MM',
+      viewMode: "months",
+      minViewMode: "months",
+      language: '{{locale}}',
+      todayBtn: true,
+      autoclose: true
+    });
+  });
+</script>
+{{#block "page-script"}}{{/block}}
+</body>
+</html>
