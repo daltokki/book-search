@@ -6,6 +6,7 @@ import com.book.repository.SearchHistoryRepository;
 import com.book.repository.entity.Category;
 import com.book.repository.entity.Member;
 import com.book.repository.entity.SearchHistory;
+import com.book.services.application.book.value.BookSearchType;
 import com.book.services.application.book.value.BookSortType;
 import com.book.services.application.category.CategoryService;
 import com.book.services.application.member.MemberService;
@@ -36,8 +37,8 @@ public class BookSearchHistoryService {
 
 		Optional<Category> category = Optional.ofNullable(categoryService.findCategory(bookSearchForm.getCategory()));
 
-		SearchHistory searchHistory = SearchHistory.create(member, bookSearchForm.getTarget(),
-			bookSearchForm.getSort().isEmpty() ? BookSortType.ACCURACY.name() : bookSearchForm.getSort(),
+		SearchHistory searchHistory = SearchHistory.create(member, BookSearchType.valueOf(bookSearchForm.getTarget()),
+			bookSearchForm.getSort().isEmpty() ? BookSortType.ACCURACY : BookSortType.valueOf(bookSearchForm.getSort()),
 			bookSearchForm.getQuery(), category.map(Category::getMainCategory).orElse(Strings.EMPTY),
 			category.map(Category::getSubCategory).orElse(Strings.EMPTY));
 

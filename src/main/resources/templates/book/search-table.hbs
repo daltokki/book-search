@@ -1,7 +1,7 @@
 <div class="form-group w-20">
   <select id="bookSortType" name="bookSortType" class="form-control">
     {{#each bookSortType}}
-      <option value="{{this}}">{{this.desc}}</option>
+      <option {{#eq this.text condition.sort}}selected="selected"{{/eq}} value="{{this}}">{{this.desc}}</option>
     {{/each}}
   </select>
 </div>

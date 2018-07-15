@@ -24,12 +24,12 @@
   {{#if page.content}}
     {{#each page.content}}
       <tr class="align-middle">
-        <td class="text-center">{{bookSearchType}}</td>
+        <td class="text-center">{{bookSearchType.desc}}</td>
         <td class="text-center">{{content}}</td>
         <td class="text-center">{{date createdAt}}</td>
-        <td class="text-center">{{#if mainCategory}}{{this}}{{else}}-{{/if}}</td>
-        <td class="text-center">{{#if subCategory}}{{this}}{{else}}-{{/if}}</td>
-        <td class="text-center">{{bookSortType}}</td>
+        <td class="text-center">{{#if mainCategory}}{{mainCategory}}{{else}}-{{/if}}</td>
+        <td class="text-center">{{#if subCategory}}{{subCategory}}{{else}}-{{/if}}</td>
+        <td class="text-center">{{bookSortType.desc}}</td>
       </tr>
     {{/each}}
   {{else}}

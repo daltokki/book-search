@@ -1,14 +1,18 @@
 package com.book.repository.entity;
 
-import lombok.Data;
+import com.book.services.application.book.value.BookSearchType;
+import com.book.services.application.book.value.BookSortType;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+@Getter
 @Entity
+@ToString(exclude = "member")
 public class SearchHistory {
 	@Id
 	@GeneratedValue
@@ -19,11 +23,13 @@ public class SearchHistory {
 	@JoinColumn(name = "memberId", nullable = false)
 	private Member member;
 
+	@Enumerated(EnumType.STRING)
 	@Column
-	private String bookSearchType;
+	private BookSearchType bookSearchType;
 
+	@Enumerated(EnumType.STRING)
 	@Column
-	private String bookSortType;
+	private BookSortType bookSortType;
 
 	@Column
 	private String content;
@@ -44,7 +50,7 @@ public class SearchHistory {
 
 	public SearchHistory() {}
 
-	private SearchHistory(Member member, String bookSearchType, String bookSortType, String content, String mainCategory, String subCategory) {
+	private SearchHistory(Member member, BookSearchType bookSearchType, BookSortType bookSortType, String content, String mainCategory, String subCategory) {
 		this.member = member;
 		this.bookSearchType = bookSearchType;
 		this.bookSortType = bookSortType;
@@ -53,7 +59,7 @@ public class SearchHistory {
 		this.subCategory = subCategory;
 	}
 
-	public static SearchHistory create(Member member, String bookSearchType, String bookSortType, String content, String mainCategory,
+	public static SearchHistory create(Member member, BookSearchType bookSearchType, BookSortType bookSortType, String content, String mainCategory,
 		String subCategory) {
 		return new SearchHistory(member, bookSearchType, bookSortType, content, mainCategory, subCategory);
 	}
