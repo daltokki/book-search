@@ -50,7 +50,7 @@ $(function () {
   elements.$divSearch.find('.card-header').on('click', '.btn', function () {
     service.filterEvent($(this));
   });
-  $('button[name=remove]').on('click', function () {
+  elements.$divResult.on('click', 'button[name=remove]', function () {
     service.removeBookmark($(this).data('key'));
   });
   elements.$divResult.on('click', '.page-link',function () {
