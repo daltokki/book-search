@@ -1,0 +1,36 @@
+{{#partial "page-body"}}
+  <div class="container">
+    <div class="row">
+      {{#if needLogin}}
+        <div class="card col-md-12 text-center">
+          <div class="card-body">
+            <p class="mt-15"><i class="fa fa-info-circle"></i> You must be signed in to use the search service.</p>
+          </div>
+        </div>
+      {{else}}
+        <div class="col-md-12" id="div-search">
+          <div class="card">
+            <div class="card-header"><i class="fa fa-history"></i> 나의 책 검색 기록</div>
+            <div class="card-body">
+              <div id="div-result">
+                <p class="text-center">날짜를 선택해주세요.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <hr class="row">
+  </div>
+{{/partial}}
+{{#partial "page-script"}}
+  <script src="/js/book/history.js"></script>
+  <script type="text/javascript">
+    {{#each dateSearchType}}
+      var button = '<button type="button" class="btn btn-sm btn-outline-info float-sm-right ml-2" name="dateSearchType" ' +
+        'id="{{this}}"># {{this.desc}} 검색</button>';
+      $('#div-search').find('.card-header').append(button);
+    {{/each}}
+  </script>
+{{/partial}}
+{{> layout}}

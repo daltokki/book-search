@@ -1,0 +1,472 @@
+﻿[
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "소설",
+		"categoryId": "1"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "시/에세이",
+		"categoryId": "3"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "인문",
+		"categoryId": "5"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "가정/생활",
+		"categoryId": "7"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "요리",
+		"categoryId": "8"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "건강",
+		"categoryId": "9"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "취미/스포츠",
+		"categoryId": "11"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "경제/경영",
+		"categoryId": "13"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "자기계발",
+		"categoryId": "15"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "정치/사회",
+		"categoryId": "17"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "정부간행물",
+		"categoryId": "18"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "역사/문화",
+		"categoryId": "19"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "종교",
+		"categoryId": "21"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "예술/대중문화",
+		"categoryId": "23"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "중/고등학습",
+		"categoryId": "25"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "기술/공학",
+		"categoryId": "26"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "외국어",
+		"categoryId": "27"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "과학",
+		"categoryId": "29"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "취업/수험서",
+		"categoryId": "31"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "여행/기행",
+		"categoryId": "32"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "컴퓨터/IT",
+		"categoryId": "33"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "잡지",
+		"categoryId": "35"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "사전",
+		"categoryId": "37"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "청소년",
+		"categoryId": "38"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "초등참고서",
+		"categoryId": "39"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "유아",
+		"categoryId": "41"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "아동",
+		"categoryId": "42"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "어린이영어",
+		"categoryId": "45"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "만화",
+		"categoryId": "47"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "대학교재",
+		"categoryId": "50"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "어린이전집",
+		"categoryId": "51"
+	},
+	{
+		"mainCategory": "국내도서",
+		"subCategory": "한국소개도서",
+		"categoryId": "53"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "소설",
+		"categoryId": "901"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "장르소설",
+		"categoryId": "902"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "시/에세이",
+		"categoryId": "903"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "경제/경영",
+		"categoryId": "904"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "자기계발",
+		"categoryId": "905"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "인문",
+		"categoryId": "906"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "정치/사회",
+		"categoryId": "907"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "로맨스/무협/판타지",
+		"categoryId": "908"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "종교",
+		"categoryId": "909"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "예술/대중문화",
+		"categoryId": "910"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "가정/생활",
+		"categoryId": "911"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "건강",
+		"categoryId": "912"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "여행/취미",
+		"categoryId": "913"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "청소년",
+		"categoryId": "914"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "학습/수험서",
+		"categoryId": "915"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "유아",
+		"categoryId": "916"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "아동",
+		"categoryId": "917"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "외국어/사전",
+		"categoryId": "918"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "과학",
+		"categoryId": "919"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "컴퓨터/IT",
+		"categoryId": "920"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "잡지",
+		"categoryId": "921"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "만화",
+		"categoryId": "922"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "외국도서",
+		"categoryId": "923"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "무료eBook",
+		"categoryId": "924"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "개인출판",
+		"categoryId": "925"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "오디오북",
+		"categoryId": "926"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "연재",
+		"categoryId": "951"
+	},
+	{
+		"mainCategory": "e북",
+		"subCategory": "eReader Free",
+		"categoryId": "953"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "문학",
+		"categoryId": "101"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "취미/실용/여행",
+		"categoryId": "103"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "생활/요리/건강",
+		"categoryId": "105"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "예술/건축",
+		"categoryId": "107"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "인문/사회",
+		"categoryId": "109"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "경제/경영",
+		"categoryId": "111"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "과학/기술",
+		"categoryId": "113"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "아동",
+		"categoryId": "115"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "한국관련도서",
+		"categoryId": "117"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "NON_BOOK",
+		"categoryId": "119"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "UMI",
+		"categoryId": "120"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "ELT/영어교재",
+		"categoryId": "181"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "어린이영어",
+		"categoryId": "183"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "대학교재",
+		"categoryId": "191"
+	},
+	{
+		"mainCategory": "영미도서",
+		"subCategory": "중국관련도서",
+		"categoryId": "194"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "일서메인",
+		"categoryId": "239"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "잡지",
+		"categoryId": "241"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "엔터테인먼트",
+		"categoryId": "243"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "만화",
+		"categoryId": "245"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "문학",
+		"categoryId": "247"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "라이트노벨",
+		"categoryId": "249"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "문고(포켓북)",
+		"categoryId": "251"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "신서(포켓북)",
+		"categoryId": "253"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "아동",
+		"categoryId": "255"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "실용서/예술",
+		"categoryId": "257"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "인문/사회",
+		"categoryId": "259"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "자연/기술과학",
+		"categoryId": "261"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "어학/학습/사전",
+		"categoryId": "263"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "문구/멀티/기타",
+		"categoryId": "264"
+	},
+	{
+		"mainCategory": "일본도서",
+		"subCategory": "중국관련도서",
+		"categoryId": "267"
+	},
+	{
+		"mainCategory": "프랑스도서",
+		"subCategory": "프랑스종합",
+		"categoryId": "486"
+	},
+	{
+		"mainCategory": "독일도서",
+		"subCategory": "독일종합",
+		"categoryId": "588"
+	},
+	{
+		"mainCategory": "스페인도서",
+		"subCategory": "스페인종합",
+		"categoryId": "690"
+	},
+	{
+		"mainCategory": "미분류",
+		"subCategory": "미분류",
+		"categoryId": "0"
+	}
+]

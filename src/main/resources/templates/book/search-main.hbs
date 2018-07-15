@@ -1,69 +1,134 @@
-{{#partial "page-style"}}
-  <style>
-    .bg {
-      background-image: url('/img/home-bg.jpg');
-      height: 400px;
-    }
-    .title {
-      padding-top: 100px;
-    }
-  </style>
-{{/partial}}
 {{#partial "page-body"}}
-  <div class="jumbotron bg">
-    <div class="container title">
-      <h1 class="display-5">Book Search</h1>
-      <p>This is book search web service.</p>
-      <p><a class="btn btn-primary btn-lg" href="/hello" role="button">Learn more »</a></p>
-    </div>
-  </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-          massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p>
-          <button class="btn btn-secondary" id="more" type="button">View details »</button>
-        </p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-          massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce
-          dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      {{#if needLogin}}
+        <div class="card col-md-12 text-center">
+          <div class="card-body">
+            <p class="mt-15"><i class="fa fa-info-circle"></i> You must be signed in to use the search service.</p>
+          </div>
+        </div>
+      {{else}}
+        <div class="col-md-12" id="div-search">
+          <div class="card">
+            <div class="card-header">
+              원하는 <i class="fa fa-hashtag"></i>검색조건을 선택해 주세요
+            </div>
+            <div class="card-body">
+              <form id="book-search-form" action="/book-search" method="get">
+                <div class="form-group row">
+                  <label for="query" class="col-sm-2 text-right col-form-label">검색 내용</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="query" name="query" type="text" placeholder="검색할 내용을 입력해주세요.">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 text-right col-form-label">카테고리</label>
+                  <div class="col-sm-10 form-inline">
+                    <div class="row col-sm-5">
+                      <select class="form-control w-100" id="mainCategory">
+                        <option value="">전체</option>
+                        {{#each bookCategoryMap}}
+                          <option value="{{@key}}">{{@key}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                    <div class="col-sm-5">
+                      <select class="form-control w-100" id="subCategory"></select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-md-2 col-sm-10">
+                    <button type="button" class="btn btn-outline-secondary" id="search-btn"><i class="fa fa-search"></i> 검색</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 mt-3" id="div-result"></div>
+      {{/if}}
+    </div>
+    <hr class="row">
+  </div>
+  <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalTitle"><i class="fa fa-list-ul"></i> 상세 정보</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            <input type="hidden" id="detailIdx" name="detailIdx">
+            <div class="form-group row col-sm-10" id="img"></div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">제목</label>
+              <div class="col-sm-10"><p class="pt-2" id="title"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">도서소개</label>
+              <div class="col-sm-10"><p class="pt-2" id="contents"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">카테고리</label>
+              <div class="col-sm-10"><p class="pt-2" id="category"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">저자 리스트</label>
+              <div class="col-sm-10"><p class="pt-2" id="authors"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">번역자 리스트</label>
+              <div class="col-sm-10"><p class="pt-2" id="translators"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">출판사</label>
+              <div class="col-sm-10"><p class="pt-2" id="publisher"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">가격정보</label>
+              <div class="col-sm-10"><p class="pt-2" id="price"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">출판일자</label>
+              <div class="col-sm-10"><p class="pt-2" id="datetime"></p></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">판매상태</label>
+              <div class="col-sm-10"><p class="pt-2" id="status"></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times-circle"></i> 닫기</button>
+          <button type="button" id="bookmark" class="btn btn-danger"><i class="fa fa-star"></i> 북마크 설정</button>
+        </div>
       </div>
     </div>
-    <hr>
   </div>
 {{/partial}}
 {{#partial "page-script"}}
+  <script src="/js/book/search.js"></script>
   <script type="text/javascript">
-    var isGuest = {{needLogin}};
-    $('#more').on('click', function () {
-      if (isGuest) {
-        alert('로그인 후 진행해 주세요.');
-        return;
-      }
-      $.ajax({
-        url: '/member/profile',
-        type: 'GET',
-        success: function (result) {
-          if (result.success) {
-            alert(result.message);
-            location.href = "/home";
-          } else {
-            alert(result.message);
-          }
-        }
-      });
-    });
+    var category_map = {};
+      {{#each bookCategoryMap}}
+      var tmp_category_list = [];
+        {{#each this}}
+        var detail_map = {};
+        detail_map['categoryId'] = {{categoryId}};
+        detail_map['subCategory'] = '{{subCategory}}';
+        tmp_category_list.push(detail_map);
+        {{/each}}
+      category_map['{{@key}}'] = tmp_category_list;
+      {{/each}}
+      {{#each bookSearchType}}
+      var button = '<button type="button" class="btn btn-sm btn-outline-info float-sm-right ml-2" name="bookSearchType" ' +
+        'id="{{this}}"># {{this.desc}} 검색</button>';
+      $('#div-search').find('.card-header').append(button);
+      {{/each}}
   </script>
 {{/partial}}
-{{> main-layout}}
+{{> layout}}

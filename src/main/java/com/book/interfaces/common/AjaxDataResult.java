@@ -12,7 +12,7 @@ public class AjaxDataResult<T> extends AjaxResult {
 	}
 
 	public static <T> AjaxDataResult success(T result) {
-		return new AjaxDataResult<>(false, "success", result);
+		return new AjaxDataResult<>(true, "success", result);
 	}
 
 	public static AjaxDataResult fail(String message) {

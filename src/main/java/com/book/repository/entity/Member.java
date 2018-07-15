@@ -1,22 +1,21 @@
 package com.book.repository.entity;
 
 import com.book.repository.value.RoleType;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
-@Getter
+@Data
 @Entity
-@ToString
 public class Member {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
-	private Long id;
+	@GeneratedValue
+	@Column(name = "member_id")
+	private Long memberId;
 
 	@Column(name = "email")
 	private String email;
@@ -33,11 +32,17 @@ public class Member {
 
 	@CreationTimestamp
 	@Column(name = "created_at")
-	private Timestamp createdAt;
+	private Date createdAt;
 
 	@UpdateTimestamp
 	@Column(name = "modified_at")
-	private Timestamp modifiedAt;
+	private Date modifiedAt;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+	private List<Bookmark> bookmarkList;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+	private List<SearchHistory> searchHistoryList;
 
 	public Member() {}
 
@@ -50,5 +55,9 @@ public class Member {
 
 	public static Member create(String email, String password, String name, RoleType role) {
 		return new Member(email, password, name, role);
+	}
+
+	public void updatePassword(String password) {
+		this.password = password;
 	}
 }

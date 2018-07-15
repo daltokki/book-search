@@ -1,12 +1,24 @@
 package com.book.interfaces;
 
+import com.book.services.application.book.value.BookSearchType;
+import com.book.services.application.book.value.BookSortType;
+import com.book.services.application.category.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class HomeController {
-	@GetMapping("/hello")
-	public String main() {
-		return "Hello world!";
+	@Autowired
+	private CategoryService categoryService;
+
+	@GetMapping({"/", "/home"})
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView("/book/search-main");
+		modelAndView.addObject("bookSearchType", BookSearchType.values());
+		modelAndView.addObject("bookSortType", BookSortType.values());
+		modelAndView.addObject("bookCategoryMap", categoryService.getCategoryMap());
+		return modelAndView;
 	}
 }
