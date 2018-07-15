@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.StringJoiner;
 import java.util.UUID;
 
@@ -26,10 +25,6 @@ public class MemberService {
 	private MemberRepository memberRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
-	public List<Member> getUserAll() {
-		return memberRepository.findAll();
-	}
 
 	@Transactional
 	public void create(MemberRequestForm memberRequestForm) {
@@ -54,14 +49,6 @@ public class MemberService {
 
 	public Member findMember(String email) {
 		return memberRepository.findByEmail(email);
-	}
-
-	@Transactional
-	public void initTestUser() {
-		String password = "ald";
-		Member member = Member.create("joyee@coupang.com", passwordEncoder.encode(password), "MINJI,LIM", RoleType.ROLE_ACTIVE_MEMBER);
-		Member save = memberRepository.save(member);
-		log.info("save test user : " + save.toString());
 	}
 
 	public Member getMemberProfile() {
