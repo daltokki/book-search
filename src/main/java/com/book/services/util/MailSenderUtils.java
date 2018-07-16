@@ -43,8 +43,7 @@ public class MailSenderUtils {
 	@Getter
 	@AllArgsConstructor
 	public enum MailTemplate {
-		REGISTER("가입을 축하드립니다 :)", "Book Search 웹 서비스에 가입해주셔서 갑사힙니다."),
-		FORGOT_PASSWORD("비민번호 분실 안내", "임시 비밀번호 안내드립니다. 3일 안에 변경해주세요.");
+		FORGOT_PASSWORD("비민번호 분실 안내", "임시 비밀번호 안내드립니다. 임시 비밀번호로 로그인 후, 즉시 새 비밀번호로 변경해주세요.");
 
 		private String subject;
 		private String context;

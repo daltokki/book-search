@@ -40,11 +40,11 @@ public class loginController {
 	public AjaxResult create(@RequestBody MemberRequestForm memberRequestForm) {
 		try {
 			memberService.create(memberRequestForm);
-			return AjaxResult.builder().success(true).message("Register Account Complete.").build();
+			return AjaxResult.builder().success(true).message("회원가입 완료!").build();
 		} catch (AlreadyExistsMemberException | UnMatchedPasswordException | UnMatchedEmailException | PolicyViolationPasswordException e) {
 			return AjaxResult.builder().success(false).message(e.getMessage()).build();
 		} catch (Exception e) {
-			return AjaxResult.builder().success(false).message("Sorry register Account failed. Try again.").build();
+			return AjaxResult.builder().success(false).message("죄송합니다 회원가입에 실패하였습니다. 다시 시도해주세요.").build();
 		}
 	}
 
@@ -54,7 +54,7 @@ public class loginController {
 		try {
 			Member member = memberService.findMember(email);
 			if (member == null) {
-				throw new UsernameNotFoundException("unknown member.");
+				throw new UsernameNotFoundException("등록되지 않은 사용자입니다.");
 			}
 			String tmpPassword = memberService.tmpPasswordPublish(member);
 
@@ -62,11 +62,11 @@ public class loginController {
 			String contents = new StringJoiner("\n").add(forgotPasswordTemplate.getContext()).add(tmpPassword).toString();
 
 			mailSender.sendMail(email, forgotPasswordTemplate.getSubject(), contents);
-			return AjaxResult.builder().success(true).message("Temp password mail send. check please").build();
-		} catch (UsernameNotFoundException e) {
+			return AjaxResult.builder().success(true).message("임시 비밀번호가 전송되었습니다. 확인해 주세요.").build();
+		} catch (UsernameNotFoundException | UnMatchedEmailException e) {
 			return AjaxResult.builder().success(false).message(e.getMessage()).build();
 		} catch (Exception e) {
-			return AjaxResult.builder().success(false).message("Sorry send mail failed. Try again.").build();
+			return AjaxResult.builder().success(false).message("이메일 전송에 실패하였습니다. 다시 시도해 주세요.").build();
 		}
 	}
 }
