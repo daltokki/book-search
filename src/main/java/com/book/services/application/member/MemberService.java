@@ -60,7 +60,7 @@ public class MemberService {
 			throw new AlreadyExistsMemberException("이미 존재하는 아이디 입니다.");
 		}
 		if (!PASSWORD_VERIFY.test(memberRequestForm.getPassword())) {
-			throw new PolicyViolationPasswordException("비밀번호 정책에 맞지 않습니다. 비밀번호는 8글자 이상이며, 하나 이상의 영문, 숫자, 특수문자를 포함해야 합니다.");
+			throw new PolicyViolationPasswordException("비밀번호 정책에 맞지 않습니다.\n 비밀번호는 8글자 이상이며, 하나 이상의 영문, 숫자, 특수문자를 포함해야 합니다.");
 		}
 		if (!memberRequestForm.getPassword().equals(memberRequestForm.getConfirmPassword())) {
 			throw new UnMatchedPasswordException("비밀번호가 확인 비밀번호와 일치하지 않습니다.");
