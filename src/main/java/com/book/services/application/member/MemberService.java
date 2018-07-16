@@ -1,11 +1,13 @@
 package com.book.services.application.member;
 
-import com.book.interfaces.member.exception.AlreadyExistsMemberException;
-import com.book.interfaces.member.exception.UnMatchedPasswordException;
 import com.book.interfaces.member.model.MemberRequestForm;
-import com.book.repository.entity.Member;
 import com.book.repository.MemberRepository;
+import com.book.repository.entity.Member;
 import com.book.repository.value.RoleType;
+import com.book.services.application.member.exception.AlreadyExistsMemberException;
+import com.book.services.application.member.exception.PolicyViolationPasswordException;
+import com.book.services.application.member.exception.UnMatchedEmailException;
+import com.book.services.application.member.exception.UnMatchedPasswordException;
 import com.book.services.domain.security.SecurityMember;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.StringJoiner;
 import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Service
@@ -25,6 +30,15 @@ public class MemberService {
 	private MemberRepository memberRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	private Predicate<String> PASSWORD_VERIFY = (password) -> {
+		String passwordPolicy = "((?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-=+]).{8,})";
+		Pattern pattern = Pattern.compile(passwordPolicy);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+	};
+
+	private Predicate<String> EMAIL_VERIFY = (email) -> Pattern.matches("[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+", email.trim());
 
 	@Transactional
 	public void create(MemberRequestForm memberRequestForm) {
@@ -38,12 +52,18 @@ public class MemberService {
 	}
 
 	private void memberCreateValidation(MemberRequestForm memberRequestForm) {
+		if (EMAIL_VERIFY.test(memberRequestForm.getEmail())) {
+			throw new UnMatchedEmailException("옳지 않은 email 형식입니다. 다시 확인해 주세요.");
+		}
 		boolean isExistMember = memberRepository.existsByEmailEquals(memberRequestForm.getEmail());
 		if (isExistMember) {
-			throw new AlreadyExistsMemberException("Already exists email address.");
+			throw new AlreadyExistsMemberException("이미 존재하는 아이디 입니다.");
+		}
+		if (PASSWORD_VERIFY.test(memberRequestForm.getPassword())) {
+			throw new PolicyViolationPasswordException("비밀번호 정책에 맞지 않습니다. 비밀번호는 8글자 이상이며, 하나 이상의 영문, 숫자, 특수문자를 포함해야 합니다.");
 		}
 		if (!memberRequestForm.getPassword().equals(memberRequestForm.getConfirmPassword())) {
-			throw new UnMatchedPasswordException("The password doesn't match confirm password.");
+			throw new UnMatchedPasswordException("비밀번호가 확인 비밀번호와 일치하지 않습니다.");
 		}
 	}
 

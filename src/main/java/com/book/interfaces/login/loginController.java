@@ -1,8 +1,10 @@
 package com.book.interfaces.login;
 
 import com.book.interfaces.common.AjaxResult;
-import com.book.interfaces.member.exception.AlreadyExistsMemberException;
-import com.book.interfaces.member.exception.UnMatchedPasswordException;
+import com.book.services.application.member.exception.AlreadyExistsMemberException;
+import com.book.services.application.member.exception.PolicyViolationPasswordException;
+import com.book.services.application.member.exception.UnMatchedEmailException;
+import com.book.services.application.member.exception.UnMatchedPasswordException;
 import com.book.interfaces.member.model.MemberRequestForm;
 import com.book.repository.entity.Member;
 import com.book.services.application.member.MemberService;
@@ -39,7 +41,7 @@ public class loginController {
 		try {
 			memberService.create(memberRequestForm);
 			return AjaxResult.builder().success(true).message("Register Account Complete.").build();
-		} catch (AlreadyExistsMemberException | UnMatchedPasswordException e) {
+		} catch (AlreadyExistsMemberException | UnMatchedPasswordException | UnMatchedEmailException | PolicyViolationPasswordException e) {
 			return AjaxResult.builder().success(false).message(e.getMessage()).build();
 		} catch (Exception e) {
 			return AjaxResult.builder().success(false).message("Sorry register Account failed. Try again.").build();

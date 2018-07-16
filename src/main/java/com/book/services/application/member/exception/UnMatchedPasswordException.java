@@ -1,4 +1,4 @@
-package com.book.interfaces.member.exception;
+package com.book.services.application.member.exception;
 
 public class UnMatchedPasswordException extends RuntimeException {
 	public UnMatchedPasswordException(String message) {

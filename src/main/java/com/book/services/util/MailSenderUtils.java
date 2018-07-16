@@ -40,10 +40,6 @@ public class MailSenderUtils {
 		}
 	}
 
-	public void sendMail(String email, MailTemplate mailTemplate) {
-		sendMail(email, mailTemplate.getSubject(), mailTemplate.getContext());
-	}
-
 	@Getter
 	@AllArgsConstructor
 	public enum MailTemplate {
