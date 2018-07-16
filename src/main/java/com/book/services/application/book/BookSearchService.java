@@ -1,6 +1,8 @@
 package com.book.services.application.book;
 
 import com.book.interfaces.api.BookSearchApiWrapper;
+import com.book.interfaces.api.exception.ApiException;
+import com.book.interfaces.api.model.ApiResultDTO;
 import com.book.interfaces.book.model.BookSearchForm;
 import com.book.services.application.book.model.BookSearchResultDto;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,10 @@ public class BookSearchService {
 		log.info("Save save search history. id={}", saveHistoryId);
 
 		PageRequest pageRequest = PageRequest.of(bookSearchForm.getPage(), bookSearchForm.getSize());
-		return bookSearchApiWrapper.getSearchResult(bookSearchForm, pageRequest);
+		ApiResultDTO apiResultDTO = bookSearchApiWrapper.getSearchResult(bookSearchForm, pageRequest);
+		if (!apiResultDTO.isSuccessful()) {
+			throw new ApiException(apiResultDTO.getMessage());
+		}
+		return (BookSearchResultDto) apiResultDTO.getBody();
 	}
 }

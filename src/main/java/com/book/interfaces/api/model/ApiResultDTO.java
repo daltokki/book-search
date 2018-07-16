@@ -2,7 +2,9 @@ package com.book.interfaces.api.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiResultDTO<T> {
 	private boolean successful;

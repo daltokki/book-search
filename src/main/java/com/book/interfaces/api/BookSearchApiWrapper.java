@@ -1,5 +1,6 @@
 package com.book.interfaces.api;
 
+import com.book.interfaces.api.model.ApiResultDTO;
 import com.book.interfaces.api.model.BookSearchResultDTO;
 import com.book.services.application.book.model.BookSearchDocumentsDto;
 import com.book.services.application.book.model.BookSearchResultDto;
@@ -29,7 +30,7 @@ public class BookSearchApiWrapper {
 	@Value("${book.api.auth.key}")
 	private String apiAuthKey;
 
-	public BookSearchResultDto getSearchResult(Object requestData, Pageable pageable) {
+	public ApiResultDTO getSearchResult(Object requestData, Pageable pageable) {
 		try {
 			String url = apiServer + "?" + ApiClientUtils.toUrl(requestData);
 			Map<String, Object> buildValueMap = ApiClientUtils.buildValueMap(requestData);
@@ -41,10 +42,11 @@ public class BookSearchApiWrapper {
 			Integer totalPages = Double.valueOf(Math.ceil(Double.parseDouble(totalCount.toString()) / pageable.getPageSize())).intValue();
 			List<BookSearchDocumentsDto> result = resultDTO.getDocuments().stream().map(BookSearchDocumentsDto::new).collect(Collectors.toList());
 
-			return BookSearchResultDto.builder().totalCount(totalCount).totalPages(totalPages).result(result).build();
+			BookSearchResultDto build = BookSearchResultDto.builder().totalCount(totalCount).totalPages(totalPages).result(result).build();
+			return ApiResultDTO.succeed(build);
 		} catch(Exception e) {
 			log.error("BookSearchApiWrapper getSearchResult Error. cause:{}, {}", e.getMessage(), e);
-			return BookSearchResultDto.builder().result(Lists.newArrayList()).build();
+			return ApiResultDTO.fail("서적 검색에 실패하였습니다.");
 		}
 	}
 }

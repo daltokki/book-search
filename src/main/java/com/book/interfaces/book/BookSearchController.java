@@ -4,6 +4,7 @@ import com.book.interfaces.book.model.BookSearchForm;
 import com.book.interfaces.book.model.DateAndPageSearchForm;
 import com.book.services.application.book.BookSearchHistoryService;
 import com.book.services.application.book.BookSearchService;
+import com.book.services.application.book.model.BookSearchResultDto;
 import com.book.services.application.book.value.BookSortType;
 import com.book.services.application.book.value.DateSearchType;
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +25,15 @@ public class BookSearchController {
 	@GetMapping("/book-search")
 	public ModelAndView search(@ModelAttribute BookSearchForm bookSearchForm) {
 		ModelAndView view = new ModelAndView("/book/search-table");
+		BookSearchResultDto search;
+		try {
+			search = bookSearchService.search(bookSearchForm);
+			view.addObject("page", search);
+		} catch (Exception e) {
+			log.error("Search Error" + e.getMessage());
+		}
 		view.addObject("bookSortType", BookSortType.values());
 		view.addObject("condition", bookSearchForm);
-		view.addObject("page", bookSearchService.search(bookSearchForm));
 		return view;
 	}
 
