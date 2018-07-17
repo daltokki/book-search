@@ -37,13 +37,6 @@ public class ApiClientUtils {
 		return exchange.getBody();
 	}
 
-	public <T> T sendGet(String baseUrl, int currentPage, int rowsPerPage, Class<T> responseCls) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("page", currentPage);
-		params.put("size", rowsPerPage);
-		return restTemplate.getForObject(baseUrl, responseCls, params);
-	}
-
 	public <T> T sendPost(String reqUrl, int insertId, String content, Class<T> responseCls) {
 		String body;
 		HttpHeaders headers;

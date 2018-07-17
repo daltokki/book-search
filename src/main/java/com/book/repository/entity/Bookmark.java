@@ -1,6 +1,7 @@
 package com.book.repository.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Getter
+@Setter
 @Entity
 @Where(clause = "deleted = '0'")
 @ToString(exclude = "member")

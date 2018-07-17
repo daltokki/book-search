@@ -12,6 +12,7 @@ import com.book.services.application.category.CategoryService;
 import com.book.services.application.member.MemberService;
 import com.book.services.domain.security.SecurityMember;
 import org.apache.logging.log4j.util.Strings;
+import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,7 +39,7 @@ public class BookSearchHistoryService {
 		Optional<Category> category = Optional.ofNullable(categoryService.findCategory(bookSearchForm.getCategory()));
 
 		SearchHistory searchHistory = SearchHistory.create(member, BookSearchType.valueOf(bookSearchForm.getTarget()),
-			bookSearchForm.getSort().isEmpty() ? BookSortType.ACCURACY : BookSortType.valueOf(bookSearchForm.getSort()),
+			StringUtils.isNullOrEmpty(bookSearchForm.getSort()) ? BookSortType.ACCURACY : BookSortType.valueOf(bookSearchForm.getSort()),
 			bookSearchForm.getQuery(), category.map(Category::getMainCategory).orElse(Strings.EMPTY),
 			category.map(Category::getSubCategory).orElse(Strings.EMPTY));
 

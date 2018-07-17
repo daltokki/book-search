@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +26,8 @@ public class BookmarkService {
 
 	@Transactional
 	public Long addBookmark(BookSearchDocumentsDto bookInfo) {
-		String email = SecurityMember.getUserDetailsOptional().map(UserDetails::getUsername).orElseThrow(() -> new RuntimeException("unValid User."));
+		String email = SecurityMember.getUserDetailsOptional().map(UserDetails::getUsername).orElseThrow(
+			() -> new UsernameNotFoundException("unValid User."));
 		Member member = memberService.findMember(email);
 
 		Bookmark bookmark = Bookmark.create(member, bookInfo.getTitle(), bookInfo.getPublisher(), bookInfo.getDatetime(),
@@ -49,7 +51,7 @@ public class BookmarkService {
 
 	@Transactional(readOnly = true)
 	public Page<Bookmark> getBookmarkList(DateAndPageSearchForm searchForm) {
-		PageRequest pageRequest = PageRequest.of(searchForm.getPage() -1, searchForm.getSize());
+		PageRequest pageRequest = PageRequest.of(searchForm.getPage() - 1, searchForm.getSize());
 		return bookmarkRepository.findByCreatedAtAfter(searchForm.getDateSearchType().getBaseDate(), pageRequest);
 	}
 }

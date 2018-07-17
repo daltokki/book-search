@@ -3,6 +3,7 @@ package com.book.repository.entity;
 import com.book.services.application.book.value.BookSearchType;
 import com.book.services.application.book.value.BookSortType;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Getter
+@Setter
 @Entity
 @ToString(exclude = "member")
 public class SearchHistory {
